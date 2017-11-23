@@ -6,7 +6,7 @@
 # Contributor: David Flemström <david.flemstrom@gmail.com>
 
 pkgname=v8
-pkgver=6.0.286.57
+pkgver=6.2.414.42
 pkgrel=1
 pkgdesc="Fast and modern Javascript engine used in Google Chrome."
 arch=('i686' 'x86_64')
@@ -20,15 +20,14 @@ source=("depot_tools::git+https://chromium.googlesource.com/chromium/tools/depot
         "v8_libbase.pc"
         "v8_libplatform.pc"
 	"d8"
-	"gcc7.patch"
 	"ctest.patch")
 sha256sums=('SKIP'
             '3616bcfb15af7cd5a39bc0f223b2a52f15883a4bc8cfcfb291837c7421363d75'
             'efb37bd706e6535abfa20c77bb16597253391619dae275627312d00ee7332fa3'
             'ae23d543f655b4d8449f98828d0aff6858a777429b9ebdd2e23541f89645d4eb'
             '6abb07ab1cf593067d19028f385bd7ee52196fc644e315c388f08294d82ceff0'
-            '3a67793d1a7a93cec00f2693f11e79749364d2541edfb99d0be3f9c132382d1f'
-            '14ee52de490515d23fe14376258921d45c45a4011b5cd3344cde026d8b494774')
+            '0660bd0687f34ea9399767f162182662c4a729ecb511afa719e5c126e74e51a6')
+          
 
 
 #
@@ -115,9 +114,6 @@ prepare() {
 
   msg2 "Using system libraries for ICU"
   ./build/linux/unbundle/replace_gn_files.py --system-libraries icu
-
-  msg2 "Applying gcc7 compatibility patch"
-  patch -p1 -i ${srcdir}/gcc7.patch
 
   msg "Applying ctest patch"
   patch -p1 -i ${srcdir}/ctest.patch
