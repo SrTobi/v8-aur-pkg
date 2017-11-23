@@ -193,6 +193,8 @@ package() {
   # But doing it here will break all users. Ideally if they use provided pkgconfig file.
   install -d ${pkgdir}/usr/include
   install -Dm644 include/*.h ${pkgdir}/usr/include
+  install -d ${pkgdir}/usr/include/libplatform
+  install -Dm644 include/libplatform/*.h ${pkgdir}/usr/include/libplatform
 
   install -d ${pkgdir}/usr/lib/pkgconfig
   install -m644 $srcdir/v8.pc ${pkgdir}/usr/lib/pkgconfig
